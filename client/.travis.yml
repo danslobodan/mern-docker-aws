@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t danslobodan/mern-docker-aws-client -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true danslobodan/mern-docker-aws-client npm run test -- --coverage
